@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Registration</h1>
+    <form id="reg-form">
+        <input type="text" id="name" placeholder="Enter your name">
+        <input type="email" id="email" placeholder="Enter your email">
+        <input type="password" id="password" placeholder="Enter password">
+        <input type="submit" value="Sign up">
+    </form>
+
+    <h1>Login</h1>
+    <form id="login-form">
+        <input type="email" id="l_email" placeholder="Enter your email">
+        <input type="password" id="l_password" placeholder="Enter password">
+        <input type="submit" value="login">
+    </form>
+    <script>
+        const form = document.getElementById("reg-form");
+        form.addEventListener("submit", async (e)=>{
+            e.preventDefault();
+            
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            const result = await fetch("/signup",{
+                method:"POST",
+                headers:{
+                    "Content-Type":"application/json"
+                },
+                body:JSON.stringify({
+                    name,
+                    email,
+                    password
+                })
+            }).then((res)=>res.json())
+
+            console.log(result)
+        });
+        
+        ////login 
+
+        const loginForm = document.getElementById("login-form");
+        loginForm.addEventListener("submit", async(e)=>{
+            e.preventDefault();
+            const lEmail = document.getElementById("l_email").value;
+            const lPassword = document.getElementById("l_password").value;
+
+        const result = await   fetch("/signin",{
+                method:"POST",
+                headers:{
+                    "Content-Type":"application/json"
+                },
+                body:JSON.stringify({
+                    email:lEmail,
+                    password:lPassword
+                })
+            }).then((res)=>res.json());
+
+            console.log(result)
+            window.location.replace("/chat")
+        })
+        
+
+    </script>
+    
+</body>
+</html>

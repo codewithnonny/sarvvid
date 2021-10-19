@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+
+    <div class="chat" style="display: flex; flex-direction: row; justify-content: space-between;">
+        <div class="startchat">
+
+            <form id="chat">
+                <input type="text" id="peerid" placeholder="enter peer id ">
+                <input type="submit" value="Connect">
+            </form>
+            <h4>My peer id</h4>
+            <p id="mypeerid"></p>
+        </div>
+    
+        
+    <div class="chatbox">
+    
+        <input type="text" id="msg">
+        <input type="submit" value="Send">
+
+    </div>
+    
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="main.js" type="module"></script>
+</body>
+</html>
